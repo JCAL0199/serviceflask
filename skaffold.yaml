@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: flask-app
+
+build:
+  artifacts:
+    - image: us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image
+      context: .
+      docker:
+        dockerfile: Dockerfile
+
+deploy:
+  cloudrun:
+    region: us-central1
+    projectId: $PROJECT_ID
+    services:
+      - name: flask-service
+        image: us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image
