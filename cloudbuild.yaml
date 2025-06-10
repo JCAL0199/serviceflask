@@ -5,16 +5,18 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/test-cloud-gcp/flask-repo/flask-image:latest']
 
-  - name: gcr.io/cloud-builders/gcloud
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
     args:
-      - deploy
-      - releases
-      - create
-      - release-$BUILD_ID
-      - --delivery-pipeline=pipeline-flask 
-      - --region=us-central1
-      - --images=flask-service=us-central1-docker.pkg.dev/test-cloud-gcp//flask-repo/flask-image:latest
-      - --annotations=app=flask-service,environment=production
+      - '-c'
+      - |
+        export RELEASE_NAME=release-$(date +%Y%m%d%H%M%S)
+        gcloud deploy releases create $RELEASE_NAME \
+          --delivery-pipeline=pipeline-flask \
+          --region=us-central1 \
+          --images=flask-image=us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image \
+          --skaffold-file=skaffold.yaml \
+          --source=.
 
 options:
   logging: CLOUD_LOGGING_ONLY
