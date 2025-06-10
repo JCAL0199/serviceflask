@@ -10,7 +10,7 @@ steps:
       - deploy
       - releases
       - create
-      - release-$DATE-$TIME
+      - release-$BUILD_ID
       - --delivery-pipeline=pipeline-flask 
       - --region=us-central1
       - --images=flask-service=us-central1-docker.pkg.dev/test-cloud-gcp//flask-repo/flask-image:latest
