@@ -5,18 +5,19 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/test-cloud-gcp/flask-repo/flask-image:latest']
 
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: bash
     args:
-      - '-c'
+      - "-c"
       - |
-        export RELEASE_NAME=release-$(date +%Y%m%d%H%M%S)
-        gcloud deploy releases create $RELEASE_NAME \
-          --delivery-pipeline=pipeline-flask \
+        gcloud deploy releases create release-$(date +%Y%m%d%H%M%S) \
+          --project=$PROJECT_ID \
           --region=us-central1 \
-          --images=flask-image=us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image \
-          --skaffold-file=skaffold.yaml \
-          --source=.
+          --delivery-pipeline=pipeline-flask \
+          --images=flask-image=us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image:$COMMIT_SHA
+
+images:
+  - "us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image:$COMMIT_SHA"
 
 options:
   logging: CLOUD_LOGGING_ONLY
