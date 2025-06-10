@@ -14,10 +14,10 @@ steps:
           --project=$PROJECT_ID \
           --region=us-central1 \
           --delivery-pipeline=pipeline-flask \
-          --images=flask-image=us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image:$COMMIT_SHA
+          --images=flask-image=us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image:latest
 
 images:
-  - "us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image:$COMMIT_SHA"
+  - "us-central1-docker.pkg.dev/$PROJECT_ID/flask-repo/flask-image:latest"
 
 options:
   logging: CLOUD_LOGGING_ONLY
