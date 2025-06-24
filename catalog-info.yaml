@@ -9,3 +9,4 @@ spec:
   type: service
   lifecycle: experimental
   owner: group:default/developers
+  subcomponentOf: component:default/integrationutils
