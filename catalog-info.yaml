@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: service-flask
+  description: Componente de prueba
+  tags:
+    - service-flask
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/developers
