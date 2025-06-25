@@ -6,8 +6,9 @@ metadata:
   description: Componente de prueba
   tags:
     - service-flask
-  github.com/project-slug: JCAL0199/serviceflask
-  backstage.io/ci-cd: github-actions
+  annotations:
+    github.com/project-slug: JCAL0199/serviceflask
+    backstage.io/ci-cd: github-actions
 spec:
   type: service
   lifecycle: experimental
