@@ -1,0 +1,6 @@
+site_name: My Service Docs
+nav:
+  - Home: index.md
+docs_dir: docs
+plugins:
+  - techdocs-core

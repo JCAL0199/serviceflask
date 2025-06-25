@@ -9,6 +9,7 @@ metadata:
   annotations:
     github.com/project-slug: JCAL0199/serviceflask
     backstage.io/ci-cd: github-actions
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   lifecycle: experimental
