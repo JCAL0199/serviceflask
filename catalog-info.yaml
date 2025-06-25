@@ -1,3 +1,4 @@
+---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -9,4 +10,43 @@ spec:
   type: service
   lifecycle: experimental
   owner: group:default/developers
-  subcomponentOf: component:default/integrationutils
+  system: bdnsar
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dispersion-ordinaria-imss
+  description: Dispersión Ordinaria IMSS
+  tags:
+    - proceso-negocio
+spec:
+  type: negocio
+  lifecycle: experimental
+  owner: group:default/developers
+  subcomponentOf: component:default/service-flask
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sub-etapa
+  description: Dispersión Ordinaria IMSS/Carga Archivo
+  tags:
+    - sub-etapa
+spec:
+  type: subetapa
+  lifecycle: experimental
+  owner: group:default/developers
+  subcomponentOf: component:default/dispersion-ordinaria-imss
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: idc
+  description: Dispersión Ordinaria IMSS/IDC
+  tags:
+    - sub-etapa
+spec:
+  type: subetapa
+  lifecycle: experimental
+  owner: group:default/developers
+  subcomponentOf: component:default/dispersion-ordinaria-imss
