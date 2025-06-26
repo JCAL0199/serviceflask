@@ -37,7 +37,7 @@ jobs:
       - name: Generate TechDocs locally
         run: |
           mkdir -p /tmp/techdocs
-          npx --yes @techdocs/cli build --output-dir site
+          npx --yes @techdocs/cli build --output-dir /tmp/techdocs
 
       - name: Download current docs from GCS
         run: |
@@ -57,6 +57,6 @@ jobs:
             --publisher-type=googleGcs \
             --storage-name=${{ secrets.GCP_BUCKET_NAME }} \
             --entity=${{ env.ENTITY_NAMESPACE }}/${{ env.ENTITY_KIND }}/${{ env.ENTITY_NAME }}
-            --directory=site
+            --directory=/tmp/techdocs
         env:
           TECHDOCS_SITEMAP_GENERATOR: 'false'
