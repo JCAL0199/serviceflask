@@ -57,7 +57,7 @@ jobs:
         run: |
           echo "Docs changed, uploading to GCS..."
           npx --yes @techdocs/cli publish \
-            --publisher=gcs \
+            --publisher-type=gcs \
             --storage-name=${{ secrets.GCP_BUCKET_NAME }} \
             --entity=${{ env.ENTITY_NAMESPACE }}/${{ env.ENTITY_KIND }}/${{ env.ENTITY_NAME }}
         env:
