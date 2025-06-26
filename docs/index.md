@@ -2,4 +2,4 @@
 
 Bienvenido al microservicio Flask de ejemplo.
 
-Proporciona endpoints para `Hello World`, estadísticas y más..
+Proporciona endpoints para `Hello World`, estadísticas y más...
