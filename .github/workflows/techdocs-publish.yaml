@@ -40,7 +40,7 @@ jobs:
       - name: Generate TechDocs locally
         run: |
           mkdir -p /tmp/techdocs
-          techdocs build --output-dir /tmp/techdocs
+          npx @techdocs/cli build --output-dir /tmp/techdocs
 
       - name: Download current docs from GCS
         run: |
