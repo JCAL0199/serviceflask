@@ -33,7 +33,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: carga-archivo
-  description: Dispersión Ordinaria IMSS/Carga Archivo
+  description: Dispersión Ordinaria IMSS/Carga Archivo -Edcion
   tags:
     - sub-etapa
 spec:
