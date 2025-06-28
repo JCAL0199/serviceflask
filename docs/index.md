@@ -1,5 +1,17 @@
-# Introducción
+# 📘 Documentación del Servicio Flask
 
-Bienvenido al microservicio Flask de ejemplo.
+Bienvenido a la documentación técnica de `service-flask`.
 
-Proporciona,endpoints,para. `Hello World`,,estad.ísticas y más..ab
+## 📦 Descripción
+
+Este servicio maneja operaciones relacionadas con usuarios y autenticación dentro del ecosistema de la empresa.
+
+## 📚 Contenido
+
+- [Arquitectura](./architecture.md)
+- [Uso](./usage.md)
+
+## 📅 Última actualización
+
+- Versión: `1.0.3`
+- Fecha de despliegue: `28 de junio de 2025`
