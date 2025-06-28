@@ -10,6 +10,9 @@ metadata:
     github.com/project-slug: JCAL0199/serviceflask
     backstage.io/ci-cd: github-actions
     backstage.io/techdocs-ref: dir:.
+    service-flask/version: "1.0.3"
+    service-flask/deployed-at: "2025-06-28T14:00Z"
+    service-flask/git-commit: "abc123"
 spec:
   type: service
   lifecycle: experimental
@@ -33,7 +36,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: carga-archivo
-  description: Dispersión Ordinaria IMSS/Carga Archivo -Edcion
+  description: Dispersión Ordinaria IMSS/Carga Archivo -Edición
   tags:
     - sub-etapa
 spec:
