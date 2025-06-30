@@ -10,9 +10,9 @@ metadata:
     github.com/project-slug: JCAL0199/serviceflask
     backstage.io/ci-cd: github-actions
     backstage.io/techdocs-ref: dir:.
-    service-flask/version: "1.0.3"
-    service-flask/deployed-at: "2025-06-28T14:00Z"
-    service-flask/git-commit: "abc123"
+    version: "1.0.3"
+    deployed-at: "2025-06-28T14:00Z"
+    git-commit: "abc123"
   links:
     - url: https://github.com/JCAL0199/serviceflask
       title: Repositorio GitHub
