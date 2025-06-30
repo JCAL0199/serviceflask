@@ -27,7 +27,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: dispersion-ordinaria-imss
-  namespace: flask
   description: Dispersión Ordinaria IMSS
   tags:
     - proceso-negocio
@@ -41,7 +40,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: carga-archivo
-  namespace: flask
   description: Dispersión Ordinaria IMSS/Carga Archivo -Edición
   tags:
     - sub-etapa
@@ -55,7 +53,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: idc
-  namespace: flask
   description: Dispersión Ordinaria IMSS/IDC
   tags:
     - sub-etapa
