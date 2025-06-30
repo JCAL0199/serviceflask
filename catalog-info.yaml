@@ -27,8 +27,7 @@ spec:
   consumesApis:
     - user-service-api
   providesApis:
-    - service-flask-api 
-  
+    - service-flask-api
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -81,4 +80,3 @@ spec:
             responses:
               '200':
                 description: Lista de usuarios
-
