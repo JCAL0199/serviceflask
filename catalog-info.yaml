@@ -44,8 +44,7 @@ spec:
   lifecycle: experimental
   owner: group:default/developers
   system: bdnsar
-  definition:
-    $text: |
+  definition: |
       openapi: 3.0.0
       info:
         title: Service Flask API
@@ -67,8 +66,7 @@ spec:
   type: openapi
   lifecycle: production
   owner: group:default/developers
-  definition:
-    $text: |
+  definition: |
       openapi: 3.0.0
       info:
         title: User Service API
