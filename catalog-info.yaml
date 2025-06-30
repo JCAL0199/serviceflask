@@ -24,6 +24,8 @@ spec:
   system: bdnsar
   dependsOn:
     - component:default/integrationaccountsmovements
+    - resource:default/service-flask-db
+    - resource:default/service-flask-queue
   consumesApis:
     - user-service-api
   providesApis:
@@ -78,3 +80,23 @@ spec:
             responses:
               '200':
                 description: Lista de usuarios
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: service-flask-db
+  description: Base de datos PostgreSQL usada por service-flask
+spec:
+  type: database
+  owner: group:default/developers
+  system: bdnsar
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: service-flask-queue
+  description: Cola RabbitMQ para tareas de fondo
+spec:
+  type: queue
+  owner: group:default/developers
+  system: bdnsar
