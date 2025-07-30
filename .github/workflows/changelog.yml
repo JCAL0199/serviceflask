@@ -1,0 +1,48 @@
+name: Generar Changelog con Gemini
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+
+      - name: Autenticación con Vertex AI
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY_JSON }}'
+
+      - name: Generar changelog
+        run: python changelog_generator.py
+
+      - name: Guardar documentación
+        run: |
+          mkdir -p docs/releases
+          cp CHANGELOG.md docs/releases/${{ github.ref_name }}.md
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add CHANGELOG.md docs/releases/
+          git commit -m "docs: changelog ${{ github.ref_name }}"
+          git push
+
+      - name: Crear GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          body_path: CHANGELOG.md
