@@ -30,4 +30,4 @@ jobs:
 
       - name: Subir md a bucket GCS
         run: |
-          gsutil cp docs/releases/${{ github.ref_name }}.md gs://bucket-changelog/releases/
+          gsutil cp CHANGELOG.md gs://bucket-changelog/releases/${{ github.ref_name }}.md
