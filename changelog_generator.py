@@ -14,7 +14,7 @@ def get_commits():
 
 def generate_changelog(version, commits):
     model = ChatVertexAI(
-        model="gemini-1.5-pro-preview-0409",
+        model="gemini-2.5-pro",
         project="test-cloud-gcp",
         location="us-central1",
         temperature=0.4,
