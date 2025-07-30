@@ -28,6 +28,13 @@ jobs:
       - name: Generar changelog
         run: python changelog_generator.py
 
+      - name: Verificar archivos antes del upload
+        run: ls -lh
+
+      - name: Verificar archivos antes del upload
+        run: |
+          gsutil
+
       - name: Subir md a bucket GCS.
         run: |
           gsutil cp CHANGELOG.md gs://bucket-changelog/releases/${{ github.ref_name }}.md
