@@ -29,11 +29,17 @@ def generate_changelog(version, commits):
     prompt = f"""
 Versión: {version}
 Fecha: {datetime.date.today()}
-
-Cambios recientes:
+Cambios incluidos:
 {chr(10).join(f"- {c}" for c in commits)}
 
-Optimiza el texto pasado en los cambios recientes, ademas de ponerlos y separar el texto original y lo optmizado.
+Redacta un changelog profesional y en español con secciones:
+- Funcionalidades nuevas
+- Correcciones
+- Cambios técnicos
+- Consideraciones de instalación
+- Rollback
+
+toma el contenido pasado en Cambios incluidos para rellenar las secciones solicitadas.
 """
     response = model.invoke([HumanMessage(content=prompt)])
     return response.content
