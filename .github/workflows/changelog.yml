@@ -23,7 +23,7 @@ jobs:
       - name: Instalar pandoc y LaTeX (para PDF)
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-base
+          sudo apt-get install -y pandoc texlive-xetex
 
       - name: Autenticación con Vertex AI
         uses: google-github-actions/auth@v2
