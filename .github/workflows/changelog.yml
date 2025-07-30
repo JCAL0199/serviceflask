@@ -20,6 +20,11 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Instalar pandoc y LaTeX (para PDF)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base
+
       - name: Autenticación con Vertex AI
         uses: google-github-actions/auth@v2
         with:
@@ -28,26 +33,11 @@ jobs:
       - name: Generar changelog
         run: python changelog_generator.py
 
-      - name: Guardar documentación
+      - name: Convertir a PDF
         run: |
           mkdir -p docs/releases
-          cp CHANGELOG.md docs/releases/${{ github.ref_name }}.md
+          pandoc CHANGELOG.md -o docs/releases/${{ github.ref_name }}.pdf
 
-      - name: Cambiar a main
+      - name: Subir PDF a bucket GCS
         run: |
-          git checkout main
-          git pull origin main
-
-      - name: Commit & Push a main
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add CHANGELOG.md docs/releases/
-          git commit -m "docs: changelog ${{ github.ref_name }}" || echo "No hay cambios por subir."
-          git push origin main
-
-      - name: Crear GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.ref_name }}
-          body_path: CHANGELOG.md
+          gsutil cp docs/releases/${{ github.ref_name }}.pdf gs://bucket-changelog/releases/
