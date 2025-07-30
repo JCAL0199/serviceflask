@@ -28,21 +28,13 @@ Fecha: {datetime.date.today()}
 Cambios recientes:
 {chr(10).join(f"- {c}" for c in commits)}
 
-Redacta un changelog en español claro y profesional.
-Incluye secciones:
-- Funcionalidades nuevas
-- Correcciones
-- Refactors
-- Consideraciones para el despliegue
-- Rollback (si aplica)
+Optimiza el texto pasado en los cambios recientes, ademas de ponerlos y separar el texto original y lo optmizado.
 """
     response = model.invoke([HumanMessage(content=prompt)])
     return response.content
 
 if __name__ == "__main__":
     commits, last_tag = get_commits()
-    for c in commits:
-        print(f"commit:---${c}")
     changelog = generate_changelog(last_tag, commits)
     
     with open("CHANGELOG.md", "w") as f:
