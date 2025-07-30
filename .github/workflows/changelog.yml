@@ -21,19 +21,19 @@ jobs:
           pip install -r requirements.txt
 
       - name: Autenticación con Vertex AI
+        id: auth
         uses: google-github-actions/auth@v2
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY_JSON_IA }}'
 
+      - name: Exportar GOOGLE_APPLICATION_CREDENTIALS
+        run: echo "GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }}" >> $GITHUB_ENV
+
       - name: Generar changelog
         run: python changelog_generator.py
 
-      - name: Verificar archivos antes del upload
-        run: ls -lh
-
-      - name: Verificar archivos antes del upload
-        run: |
-          gsutil
+      - name: Mostrar contenido de CHANGELOG.md
+        run: cat CHANGELOG.md
 
       - name: Subir md a bucket GCS.
         run: |
