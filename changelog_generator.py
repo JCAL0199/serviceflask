@@ -39,7 +39,8 @@ Redacta un changelog profesional y en español con secciones:
 - Consideraciones de instalación
 - Rollback
 
-toma el contenido pasado en Cambios incluidos para rellenar las secciones solicitadas.
+Toma el contenido pasado en Cambios incluidos para rellenar las secciones solicitadas.
+Solo incluye información solicitada, que no se agregue introducción ni que representa la información plasmada.
 """
     response = model.invoke([HumanMessage(content=prompt)])
     return response.content
