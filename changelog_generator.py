@@ -41,6 +41,8 @@ Incluye secciones:
 
 if __name__ == "__main__":
     commits, last_tag = get_commits()
+    for c in commits
+        print(f"commit:---{c}")
     changelog = generate_changelog(last_tag, commits)
     
     with open("CHANGELOG.md", "w") as f:
