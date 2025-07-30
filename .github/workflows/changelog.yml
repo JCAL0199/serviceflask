@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -34,7 +36,3 @@ jobs:
 
       - name: Mostrar contenido de CHANGELOG.md
         run: cat CHANGELOG.md
-
-      - name: Subir md a bucket GCS.
-        run: |
-          gsutil cp CHANGELOG.md gs://bucket-changelog/releases/${{ github.ref_name }}.md
