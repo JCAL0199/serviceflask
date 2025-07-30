@@ -12,15 +12,12 @@ def get_commits():
     tags = subprocess.check_output(["git", "tag", "--sort=-creatordate"]).decode().split()
     if len(tags) < 2:
         raise Exception("No hay suficientes tags para generar changelog")
-
     prev_tag = tags[1]  # tag anterior
     curr_tag = tags[0]  # tag actual
 
     # Obtener commits entre prev_tag y curr_tag
     log = subprocess.check_output(["git", "log", f"{prev_tag}..{curr_tag}", "--pretty=format:* %s"]).decode()
-
-    last_tag = subprocess.check_output(["git", "describe", "--tags", "--abbrev=0"]).decode().strip()
-    return log.splitlines(), last_tag
+    return log, tags[0]
 
 def generate_changelog(version, commits):
     model = ChatVertexAI(
