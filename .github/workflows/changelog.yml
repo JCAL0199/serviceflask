@@ -23,7 +23,7 @@ jobs:
       - name: Autenticación con Vertex AI
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: '${{ secrets.GCP_SA_KEY_JSON }}'
+          credentials_json: '${{ secrets.GCP_SA_KEY_JSON_IA }}'
 
       - name: Generar changelog
         run: python changelog_generator.py
