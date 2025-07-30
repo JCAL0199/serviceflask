@@ -28,11 +28,11 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY_JSON_IA }}'
 
-      - name: Exportar GOOGLE_APPLICATION_CREDENTIALS
-        run: echo "GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }}" >> $GITHUB_ENV
-
       - name: Generar changelog
         run: python changelog_generator.py
+
+      - name: Ver tags en el repo
+        run: git tag --sort=-creatordate
 
       - name: Mostrar contenido de CHANGELOG.md
         run: cat CHANGELOG.md
