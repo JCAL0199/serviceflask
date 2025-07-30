@@ -28,6 +28,6 @@ jobs:
       - name: Generar changelog
         run: python changelog_generator.py
 
-      - name: Subir md a bucket GCS
+      - name: Subir md a bucket GCS.
         run: |
           gsutil cp CHANGELOG.md gs://bucket-changelog/releases/${{ github.ref_name }}.md
