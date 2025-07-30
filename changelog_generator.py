@@ -1,8 +1,8 @@
 import os
 import datetime
 import subprocess
-from langchain.chat_models import ChatVertexAI
-from langchain.schema import HumanMessage
+from langchain_google_vertexai import ChatVertexAI
+from langchain_core.messages import HumanMessage
 from dotenv import load_dotenv
 
 load_dotenv()
