@@ -1,1 +1,5 @@
-Flask==2.3.2 
+Flask==2.3.2
+langchain
+langchain-google-vertexai
+google-cloud-aiplatform
+python-dotenv
