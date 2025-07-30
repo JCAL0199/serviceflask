@@ -20,11 +20,6 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Instalar pandoc y LaTeX (para PDF)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex
-
       - name: Autenticación con Vertex AI
         uses: google-github-actions/auth@v2
         with:
@@ -33,11 +28,6 @@ jobs:
       - name: Generar changelog
         run: python changelog_generator.py
 
-      - name: Convertir a PDF
+      - name: Subir md a bucket GCS
         run: |
-          mkdir -p docs/releases
-          pandoc CHANGELOG.md -o docs/releases/${{ github.ref_name }}.pdf
-
-      - name: Subir PDF a bucket GCS
-        run: |
-          gsutil cp docs/releases/${{ github.ref_name }}.pdf gs://bucket-changelog/releases/
+          gsutil cp docs/releases/${{ github.ref_name }}.md gs://bucket-changelog/releases/
