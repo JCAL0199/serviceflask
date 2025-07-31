@@ -37,7 +37,7 @@ def load_repo_docs():
 def generate_document(docs):
     # Embedding + RAG
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vs = Chroma.from_documents(docs, embedding, persist_directory=".chroma")
+    vs = Chroma.from_documents(docs, embeddings, persist_directory=".chroma")
     retriever = vs.as_retriever()
 
     # Cargar plantilla
