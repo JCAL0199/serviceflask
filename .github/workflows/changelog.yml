@@ -36,3 +36,10 @@ jobs:
 
       - name: Mostrar contenido de CHANGELOG.md
         run: cat CHANGELOG.md
+      
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Upload CHANGELOG to GCS
+        run: |
+          gsutil cp CHANGELOG.md gs://bucket-changelog/releases/${GITHUB_REF_NAME}.md
