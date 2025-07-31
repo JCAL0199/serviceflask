@@ -51,7 +51,7 @@ def generate_document(docs):
     # Cargar plantilla
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     template = env.get_template("readme_prompt.j2")
-    context_chunks = retriever.get_relevant_documents("describe el proyecto")
+    context_chunks = retriever.get_relevant_documents("describe el proyecto, pon el nombre de cada archivo y cual es la logica de cada archivo")
     flat_context = "\n".join([doc.page_content for doc in context_chunks])
     prompt = template.render(context=flat_context)
 
@@ -73,7 +73,7 @@ def upload_to_gcs(local_path, bucket_name):
     blob_name = f"docs/{local_path.name}"
     blob = bucket.blob(blob_name)
     blob.upload_from_filename(local_path)
-    blob.make_public()
+    #blob.make_public()
     print(f"📤 Archivo subido a GCS: {blob.public_url}")
     return blob.public_url
 
