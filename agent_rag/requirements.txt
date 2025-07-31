@@ -1,6 +1,6 @@
 langchain
+langchain-community[vertexai]
 langchain-google-vertexai
-langchain-community
 google-cloud-storage
-python-dotenv
 jinja2
+python-dotenv
