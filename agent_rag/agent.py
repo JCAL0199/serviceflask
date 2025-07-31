@@ -53,8 +53,6 @@ def generate_document(docs):
     template = env.get_template("readme_prompt.j2")
     context_chunks = retriever.get_relevant_documents("describe el proyecto, archivos. funciones, clases, metodos")
     flat_context = "\n".join([doc.page_content for doc in context_chunks])
-    print("🔍 Contexto usado en el prompt:")
-    print(flat_context[:3000])  # muestra los primeros 3000 caracteres
     prompt = template.render(context=flat_context)
 
     # LLM
