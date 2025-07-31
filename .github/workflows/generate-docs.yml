@@ -29,7 +29,7 @@ jobs:
 
       - name: Clonar repo objetivo
         run: |
-          git clone https://github.com/JCAL0199/serviceflask repo
+          git clone https://github.com/JCAL0199/amplify-angular-template repo
 
       - name: Generate and upload docs
         run: python agent_rag/agent.py

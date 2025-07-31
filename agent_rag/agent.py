@@ -33,7 +33,7 @@ def load_repo_docs():
         if any(ex in path.parts for ex in EXCLUDED_DIRS):
             continue
 
-        if path.is_file() and path.suffix in {".py", ".md", ".yml", ".yaml", ".json"}:
+        if path.is_file() and path.suffix in {".py", ".md", ".yml", ".yaml", ".json", ".ts", ".html", ".css"}:
             try:
                 loader = TextLoader(str(path), encoding="utf-8")
                 docs.extend(loader.load())
