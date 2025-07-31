@@ -4,3 +4,4 @@ langchain-google-vertexai
 google-cloud-storage
 jinja2
 python-dotenv
+langchain-google-genai

@@ -29,7 +29,7 @@ jobs:
       - name: Verifica embeddings disponibles
         run: |
           pip show langchain-community
-          python -c "from langchain_community.embeddings import GoogleGenerativeAIEmbeddings; print('✅ embeddings disponibles')"
+          python -c "from langchain_google_genai import GoogleGenerativeAIEmbeddings; print('✅ embeddings disponibles')"
       
       - name: Generate and upload docs
         run: python agent_rag/agent.py
