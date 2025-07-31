@@ -24,6 +24,7 @@ PROJECT = "test-cloud-gcp"
 LOCATION = "us-central1"
 MODEL_NAME = "gemini-2.5-pro"
 EXCLUDED_DIRS = {".git", "__pycache__", ".venv", "venv", "node_modules"}
+TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "prompts")
 
 # ---------- LOAD FILES ----------
 def load_repo_docs():
@@ -31,7 +32,7 @@ def load_repo_docs():
     for path in Path("repo").rglob("*"):
         if any(ex in path.parts for ex in EXCLUDED_DIRS):
             continue
-            
+
         if path.is_file() and path.suffix in {".py", ".md", ".yml", ".yaml", ".json"}:
             try:
                 loader = TextLoader(str(path), encoding="utf-8")
@@ -48,7 +49,7 @@ def generate_document(docs):
     retriever = vs.as_retriever()
 
     # Cargar plantilla
-    env = Environment(loader=FileSystemLoader("prompts"))
+    env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     template = env.get_template("readme_prompt.j2")
     context_chunks = retriever.get_relevant_documents("describe el proyecto")
     flat_context = "\n".join([doc.page_content for doc in context_chunks])
