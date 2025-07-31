@@ -26,10 +26,9 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY_JSON }}
 
-      - name: Verifica embeddings disponibles
+      - name: Clonar repo objetivo
         run: |
-          pip show langchain-community
-          python -c "from langchain_google_genai import GoogleGenerativeAIEmbeddings; print('✅ embeddings disponibles')"
-      
+          git clone https://github.com/JCAL0199/serviceflask repo
+
       - name: Generate and upload docs
         run: python agent_rag/agent.py

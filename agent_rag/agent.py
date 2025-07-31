@@ -23,15 +23,22 @@ BUCKET_NAME = "bucket-changelog"
 PROJECT = "test-cloud-gcp"
 LOCATION = "us-central1"
 MODEL_NAME = "gemini-2.5-pro"
+EXCLUDED_DIRS = {".git", "__pycache__", ".venv", "venv", "node_modules"}
 
 # ---------- LOAD FILES ----------
 def load_repo_docs():
-    files = []
-    for file_path in REPO_PATH.rglob("*"):
-        if file_path.suffix in {".py", ".md", ".yml", ".yaml", ".json"}:
-            loader = TextLoader(str(file_path), encoding="utf-8")
-            files.extend(loader.load())
-    return files
+    docs = []
+    for path in Path("repo").rglob("*"):
+        if any(ex in path.parts for ex in EXCLUDED_DIRS):
+            continue
+            
+        if path.is_file() and path.suffix in {".py", ".md", ".yml", ".yaml", ".json"}:
+            try:
+                loader = TextLoader(str(path), encoding="utf-8")
+                docs.extend(loader.load())
+            except Exception as e:
+                print(f"⚠️ Error al cargar {path}: {e}")
+    return docs
 
 # ---------- RAG PROCESS ----------
 def generate_document(docs):
