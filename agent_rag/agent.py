@@ -7,7 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 from langchain_community.chat_models import ChatVertexAI
 from langchain_core.messages import HumanMessage
 from langchain_community.document_loaders import TextLoader
-from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 
@@ -37,7 +37,7 @@ def load_repo_docs():
 def generate_document(docs):
     # Embedding + RAG
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vs = FAISS.from_documents(docs, embeddings)
+    vs = Chroma.from_documents(docs, embedding, persist_directory=".chroma")
     retriever = vs.as_retriever()
 
     # Cargar plantilla
