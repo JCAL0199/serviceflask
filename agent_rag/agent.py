@@ -8,7 +8,8 @@ from langchain_community.chat_models import ChatVertexAI
 from langchain_core.messages import HumanMessage
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import FAISS
-from langchain_google_vertexai import GoogleGenerativeAIEmbeddings
+from langchain_community.embeddings import GoogleGenerativeAIEmbeddings
+
 from google.cloud import storage
 
 load_dotenv()
