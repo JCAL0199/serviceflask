@@ -58,7 +58,7 @@ def generate_document(docs):
     # LLM
     model = ChatVertexAI(
         model_name=MODEL_NAME,
-        temperature=0.3,
+        temperature=0.4,
         max_output_tokens=2048,
         project=PROJECT,
         location=LOCATION,

@@ -21,10 +21,11 @@ jobs:
         run: |
           pip install -r agent_rag/requirements.txt
 
-      - name: Auth to GCP
+      - name: Autenticación con Vertex AI
+        id: auth
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY_JSON }}
+          credentials_json: '${{ secrets.GCP_SA_KEY_JSON_IA }}'
 
       - name: Clonar repo objetivo
         run: |
