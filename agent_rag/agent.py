@@ -4,7 +4,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from jinja2 import Environment, FileSystemLoader
 
-from langchain_community.chat_models import ChatVertexAI
+from langchain_google_vertexai import ChatVertexAI
 from langchain_core.messages import HumanMessage
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import Chroma
@@ -63,6 +63,7 @@ def generate_document(docs):
         project=PROJECT,
         location=LOCATION,
     )
+
     return model.invoke([HumanMessage(content=prompt)]).content
 
 # ---------- GCS UPLOAD ----------
